@@ -11,10 +11,10 @@
 <body>
     <div id="app">
         <h1 v-once>{{title}}</h1>
-        <p>{{sayHello()}} - <a v-bind:href="link" target="_blank">Google</a></p>
+        <p>{{sayHello()}} - <a :href="link" target="_blank">Google</a></p>
         <hr>
         <p v-html="finishedLink"></p>
-        <button v-on:click="increase(2, $event)">Click me</button>
+        <button @click="increase(2, $event)">Click me</button>
         <button v-on:click="counter++">Click me</button>
         <p>{{counter}}</p>
         <p v-on:mousemove="updateCoordinates">Coordinates: {{x}} / {{y}} - <span v-on:mousemove.stop="">DEAD SPOT</span></p>
@@ -46,6 +46,14 @@
                 },
                 alertMe: function(){
                     alert("hello!");
+                }
+            },
+            watch: {
+                counter: function(value) {
+                    var vm = this;
+                    setTimeout(function(){
+                        vm.counter = 0
+                    }, 2000);
                 }
             }
         });
