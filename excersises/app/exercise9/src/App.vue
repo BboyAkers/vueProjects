@@ -23,9 +23,11 @@
                         <input type="radio" id="yes" value="Yes" v-model="storedData">Yes
                     </label>
                     <label for="no">
-                        <input type="radio" id="no" value="No" v-model="storedData">Yes
+                        <input type="radio" id="no" value="No" v-model="storedData">No
                     </label>
-
+                    <div>
+                    <button type="submit" @click.prevent="submitted" class="btn btn-primary">Submit</button>
+                    </div>
                     <!-- Exercise 2 -->
                     <!-- Only display the Form if it has NOT been submitted -->
                     <!-- Display the Data Summary ONCE the Form HAS been submitted -->
@@ -37,17 +39,17 @@
             </div>
         </form>
         <hr>
-        <div class="row">
+        <div class="row" v-if="isSubmitted">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4>Your Data</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Full Name: </p>
-                        <p>Mail: </p>
-                        <p>Password: </p>
-                        <p>Store in Database?: </p>
+                        <p>Full Name: {{userData.firstName}} {{userData.lastName}}</p>
+                        <p>Mail: {{userData.email}}</p>
+                        <p>Password: {{userData.password}}</p>
+                        <p>Store in Database?: {{ storedData}}</p>
                     </div>
                 </div>
             </div>
@@ -66,7 +68,13 @@
                     password: '',
 
                 },
+                isSubmitted: false,
                 storedData: 'Yes'
+            }
+        },
+        methods: {
+            submitted() {
+                this.isSubmitted = true;
             }
         }
     }
