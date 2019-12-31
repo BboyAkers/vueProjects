@@ -9,13 +9,6 @@ export default {
   head() {
     return {
       title: 'Create an Event',
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'You can create an event in your neighborhood'
-        }
-      ]
     }
   }
 }
