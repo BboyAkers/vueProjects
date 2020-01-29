@@ -5,9 +5,10 @@
   "author": "",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": " nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
+    "server": "json-server --watch db.json",
     "generate": "nuxt generate"
   },
   "dependencies": {
