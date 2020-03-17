@@ -10,7 +10,7 @@
           Password:
         </label>
         <input v-model="password" type="password" name="password" value>
-
+        <p>{{ error }}</p>
         <button type="submit" name="button">
           Login
         </button>
@@ -26,7 +26,8 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      error: null
     }
   },
   methods: {
@@ -37,6 +38,9 @@ export default {
       })
       .then(() => {
         this.$router.push({ name: 'dashboard' })
+      })
+      .catch( err => {
+        this.error= err.response.data.error
       })
     }
   }

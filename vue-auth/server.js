@@ -39,7 +39,17 @@ app.post('/register', (req, res) => {
 
     const data = JSON.stringify(user, null, 2)
     var dbUserEmail = require('./db/user.json').email
+    var errorsToSend = []
 
+    if (dbUserEmail === user.email) { // check to see if email already exists in db
+      errorsToSend.push('An account with this email already exists.')
+    }
+    if (user.password.length < 5) { // validate password is in correct format
+      errorsToSend.push('Password too short.')
+    }
+    if (errorsToSend.length > 0) { // check if there are any errors
+      res.status(400).json({ errors: errorsToSend }) // send errors back with status code
+    }
     if (dbUserEmail === req.body.email) {
       res.sendStatus(400)
     } else {
@@ -78,7 +88,8 @@ app.post('/login', (req, res) => {
       name: userInfo.name
     })
   } else {
-    res.sendStatus(400)
+    // res.sendStatus(400)
+    res.status(401).json({ error: 'Invalid login. Please try again.' })
   }
 })
 
