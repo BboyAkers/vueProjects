@@ -11,18 +11,15 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import useEventSpace from '@/use/event-space'
 export default {
   setup() {
-    const capacity = ref(3)
-    const attending = ref(['Tim', 'Bob', 'Joe'])
-    const spacesLeft = computed(() => {
-      return capacity.value - attending.value.length
-    })
-
-    function increaseCapacity() {
-      capacity.value++
-    }
+    const {
+      capacity,
+      attending,
+      spacesLeft,
+      increaseCapacity,
+    } = useEventSpace()
     return { capacity, attending, spacesLeft, increaseCapacity }
   },
 }
