@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.3",
-    "nuxt": "^3.0.0"
+    "nuxt": "^3.14.0"
   },
   "devDependencies": {
     "eslint-config-prettier": "^4.1.0",
