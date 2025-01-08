@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.4.1",
-    "vue": "^2.5.17",
+    "vue": "^3.0.0",
     "vue-router": "^2.0.1",
     "vuex": "^2.4.0"
   },
